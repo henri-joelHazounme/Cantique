@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Cantique</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="/cantique.js" >
+  
+</script>
+    </head>
+    <body>
+        <div class="">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand">Cantiques</a>
+                    </div>
+                    <ul class="nav navbar-nav">	  
+                        <li class=""><a href="http://localhost/"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a></li>						
+                        <li><a href="http://localhost/cantique">ajouter</a></li>     
+			<li><a href="http://localhost/deconnexion">déconnexion</a></li>     
+                    </ul>
+                </div>
+          
+            </nav>
+             <div id = "success">
+          </div>
+          <div id = "error">
+          </div>
+             <div class=" form text-center" id="formulaire">
+               <div class="form-group">
+                    <label for="nombre">nombre de couplet  :</label><input type="text" id="nombre" readonly="readonly" value="<%=nombre%>">
+               </div>
+                <div class="form-group">
+                     <label for="numero">Numero cantique :</label><input type="text" readonly="readonly" id="numero" name="numero">
+               </div>
+               
+               
+                   <%for(var j  = 1; j < cantiques[i].nombre ; j ++) {%>
+                          <div name="cantique">                                
+                                <div class="">
+                                     <div class="">Couplet <%=j%> :</div>
+                                     <div class=""> 
+                                         <textarea cols="60" rows="7" readonly="readonly"> <%= cantiques.couplet[j]%> </textarea>
+                                     </div>
+                                </div>
+                                <% if (locals.cantiques.refrain){%>
+                                    <div class="">
+                                            <div class="">Refrain</div>
+                                            <div class="p"><textarea cols="60" rows="7" readonly="readonly"> <%=cantiques.refrain%></textarea></div>
+                                    </div>
+                                 <%}%>
+                          </div>
+                       <%}%>
+             
+              <button class="text-center" id="submit" >envoyer</button>
+            </div>
+        </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cantique</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand">Cantiques ECC</a>
+                    </div>
+                    <ul class="nav navbar-nav">	  
+                        <li class=""><a href="http://localhost/"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a></li>                        
+                        <li><a href="http://localhost/connect">connecter</a></li>     
+                    </ul>
+                </div>
+            </nav>
+             <%  if (locals.cantiques){%>
+                   <%for(var i  = 0; i< cantiques.length ; i ++) {%>
+                       <%for(var j  = 1; j < cantiques[i].couplet ; j ++) {%>                             
+                            <p><%= cantiques[i].couplet[j]%>></p>
+                            <%  if (locals.cantiques[i].refrain){%>
+                                <p><%= cantiques[i].couplet[j]%></p>                   
+                           <%}%>
+                       <%}%>
+                   <%}%>                 
+             <%}else{%>
+                 <div class="alert alert-info">
+                    <strong>Info!</strong> La base de données est vide :(
+                 </div>
+             <%}%>
+        </div>
+    </body>
+<style>
+   #cantique{
+           border-bottom : solid,5px;
+   }
+</style>
+</html>

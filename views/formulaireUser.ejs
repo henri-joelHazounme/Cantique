@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Cantique</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body class="container-fluid">
+		 <h2>Création de Compte Administrateur Julios</h2>
+		 <form method="POST" action="/inscription/12" onsubmit="return verifier()">
+		    <div class="row form-group">
+			    <div class="col-sm-2">
+				  <label  for="Remail"> Email:</label>				  
+			    </div>
+				<div class="col-sm-4">
+				    <div class="error" id="email"></div>
+				    <input type="text"class="form-control" name="email" id="Remail" >
+			       </div>
+			</div>
+			<div class="row form-group">
+			    <div class="col-sm-2">
+				    <label for="Rpassword"> Password:</label>
+			    </div>
+				<div class="col-sm-4">
+				     <div class="error" id="password"></div>
+				    <input type="password" class="form-control" name="password" id="Rpassword" >
+			         
+			    </div>
+			</div>	
+                        <div class="row form-group">
+			    <div class="col-sm-2">
+				    <label for="confirmation"> Confirmation:</label>
+			    </div>
+				<div class="col-sm-4">
+				     <div class="error" id="Rconfirmation"></div>
+				    <input type="password" class="form-control" name="password" id="confirmation" >
+			         
+			    </div>
+			</div>	
+                        <div id="error"></div>		 
+                      <button type="submit" >login</button>			
+		 </form>
+               <script>
+                function verifier(){
+                     var confirmation = document.getElementById('confirmation').value;
+                     var password = document.getElementById('Rpassword').value;
+					
+                     if (password != confirmation){
+					 
+                          var html = '<div class="alert alert-danger">';
+                        html += ' <strong>Error!</strong> oups ! le mot de passe et la confirmation sont différents :(';
+                        html += '</div>';
+                        document.getElementById("error").innerHTML = html;
+                            return false;
+                     }else if(password === null || password === ""){
+                         
+						   var html = '<div class="alert alert-danger">';
+                        html += ' <strong>Error!</strong> oups ! le mot de passe et la confirmation sont vide :(';
+                        html += '</div>';
+                        document.getElementById("error").innerHTML = html;
+                            return false;
+                     }else{
+					     
+					       return true;
+					 }
+                     
+                  }
+               </script>
+	</body>
+</html>

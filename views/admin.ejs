@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Cantique</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body{
+ 
+
+ background-image: url("/pictures/body.png");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+     background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;  
+font-family: "Times New Roman", Times, serif;
+}
+</style>
+    </head>
+    <body class="container-fluid">
+        
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand">Cantiques</a>
+                    </div>
+                    <ul class="nav navbar-nav">	  
+                        <li class=""><a href="http://localhost/"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a></li>						
+                        <li><a href="http://localhost/cantique">ajouter</a></li>     
+						<li><a href="http://localhost/deconnexion">déconnexion</a></li>  
+                       <li><a href="http://localhost/demande/modification">Modifier</a></li>   
+                    </ul>
+                </div>
+            </nav>
+
+<div class="text-center">
+               <% if (locals.success ){%>
+                <div class="alert alert-success">
+                    <strong>Success!</strong> <%= success%>
+                </div>
+             <%}%>
+         <% if (locals.error ){%>
+                <div class="alert alert-danger">
+                    <strong>Error!</strong> <%= error%>
+                </div>
+          <%}%>
+             <%  if (locals.cantiques){%>
+                   <%for(var i  = 0; i< cantiques.length ; i ++) {%>
+                        <section> <h4>Cantique  <%=cantiques[i].numero%> : </h4> </section>
+                       <%for(var j  = 1; j < cantiques[i].nombre ; j ++) {%>
+                          <div id="cantique">                                
+                                <div class="">
+                                     <div class="">Couplet <%=j%> :</div>
+                                     <div class=""> 
+                                         <textarea cols="60" rows="7" readonly="readonly"> <%= cantiques[i].couplet[j]%> </textarea>
+                                     </div>
+                                </div>
+                                <% if (locals.cantiques[i].refrain){%>
+                                    <div class="">
+                                            <div class="">Refrain</div>
+                                            <div class="p"><textarea cols="60" rows="7" readonly="readonly"> <%=cantiques[i].refrain%></textarea></div>
+                                    </div>
+                                 <%}%>
+                          </div>
+                       <%}%>
+                   <%}%>
+             <%}else{%>
+                 <div class="alert alert-info">
+                    <strong>Info!</strong> La base de données est vide :(
+                 </div>
+             <%}%>
+        </div>
+    </body>
+<style>
+   #cantique{
+           border-bottom : solid,5px;
+   }
+</style>
+</html>
