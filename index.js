@@ -10,7 +10,7 @@ let upload = multer(); // for parsing multipart/form-data
 let random = require("random-number-generator");
 let nodemailer = require('nodemailer');
 let MongoStore = require('connect-mongodb-session')(session);
-let useremail = "motihenri@gmail.com";
+let useremail = "adjahojulios3@gmail.com";
 let app = express();
 var store = new MongoStore({
     uri: 'mongodb://localhost:27017/Cantiques',
@@ -222,15 +222,13 @@ database.connexion(function () {
     app.listen(app.get('port'), function () {
         console.log("Cantique online " + app.get('port'));
         database.countUser(function (document) {
-            console.log("2222222222");
+           
             if (document !== null && (document.length === 0)) {
-                console.log(document);
+                
                 var code = randomstring.generate();
                 sendMail(useremail, "http://159.203.22.37:8080/inscription/" + code,
                         "creation de compte pour cantiques");
                 database.saveInvitation(code);
-            }else{
-                console.log(document);
             }
         });
     });
