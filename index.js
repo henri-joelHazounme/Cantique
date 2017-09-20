@@ -17,7 +17,7 @@ var store = new MongoStore({
     collection: 'Sessions'
 });
 app.use(express.static(__dirname + '/public'));
-app.set('port', (process.env.PORT || 80));
+app.set('port', (process.env.PORT || 8080));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
 //app.use(expressValidator);
@@ -222,11 +222,15 @@ database.connexion(function () {
     app.listen(app.get('port'), function () {
         console.log("Cantique online " + app.get('port'));
         database.countUser(function (document) {
-            if (document !== null && document.length === 0) {
+            console.log("2222222222");
+            if (document !== null && (document.length === 0)) {
+                console.log(document);
                 var code = randomstring.generate();
-                sendMail(useremail, "http://localhost/inscription/" + code,
+                sendMail(useremail, "http://159.203.22.37:8080/inscription/" + code,
                         "creation de compte pour cantiques");
                 database.saveInvitation(code);
+            }else{
+                console.log(document);
             }
         });
     });
