@@ -10,7 +10,7 @@ let upload = multer(); // for parsing multipart/form-data
 let random = require("random-number-generator");
 let nodemailer = require('nodemailer');
 let MongoStore = require('connect-mongodb-session')(session);
-let useremail = "adjahojulios3@gmail.com";
+let useremail = "adjahojulios@gmail.com";
 let app = express();
 var store = new MongoStore({
     uri: 'mongodb://localhost:27017/Cantiques',
