@@ -17,7 +17,7 @@ var store = new MongoStore({
     collection: 'Sessions'
 });
 app.use(express.static(__dirname + '/public'));
-app.set('port', (process.env.PORT || 8080));
+app.set('port', (process.env.PORT || 80));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded
 //app.use(expressValidator);
@@ -205,6 +205,42 @@ database.connexion(function () {
     app.get('/api/cantiques', function (req, res) {
         database.getCantiques(function (documents) {
             res.json(documents);
+        });
+    });
+    app.post("/insert/cantique/anglais",upload.array(),function (req,res){
+        database.insertOneCantiquesAnglais(req.body,function(reponse){
+            res.json(reponse);
+        });
+        
+    });
+    app.post("/insert/cantique/francais",upload.array(),function (req,res){
+        database.insertOneCantiquesFrancais(req.body,function(reponse){
+            res.json(reponse);
+        });
+    });
+    app.post("/insert/cantique/goun",upload.array(),function (req,res){
+        database.insertOneCantiquesGoun(req.body,function(reponse){
+            res.json(reponse);
+        });
+    });
+    app.post("/insert/cantique/yoruba",upload.array(),function (req,res){
+        database.insertOneCantiquesYoruba(req.body,function(reponse){
+            res.json(reponse);
+        });
+    });
+    app.post("/insert/ecc/interdit",upload.array(),function (req,res){
+        database.insertOneInterdits(req.body,function(reponse){
+            res.json(reponse);
+        });
+    });
+    app.post("/insert/ecc/commandement",upload.array(),function (req,res){
+        database.insertCommandements(req.body,function(reponse){
+            res.json(reponse);
+        });
+    });
+    app.post("/insert/ecc/precepte",upload.array(),function (req,res){
+        database.insertOnePreceptes(req.body,function(reponse){
+            res.json(reponse);
         });
     });
     app.get("/demande/modification",function(req,res){

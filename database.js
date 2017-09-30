@@ -63,6 +63,111 @@ exports.findAndDeleteInvitation = function (codeInvitation, callback) {
             });
 };
 
+exports.insertOneCantiquesAnglais = function (Cantiques, callback) {
+    database.collection("Cantiques_Anglais").findOne({'numero': Cantiques.numero}, function (error, result) {
+        if (error) {
+            console.log(error);
+        }
+        if (result) {
+            callback(false);
+        } else {
+            database.collection("Cantiques_Anglais").insertOne(Cantiques);
+            callback(true);
+        }
+    });
+
+};
+exports.insertOneCantiquesFrancais = function (Cantiques, callback) {
+    database.collection("Cantiques_Francais").findOne({'numero': Cantiques.numero}, function (error, result) {
+        if (error) {
+            console.log(error);
+        }
+        if (result) {
+            callback(false);
+        } else {
+            database.collection("Cantiques_Francais").insertOne(Cantiques);
+            callback(true);
+        }
+    });
+};
+exports.insertOneCantiquesGoun = function (Cantiques, callback) {
+    database.collection("Cantiques_Goun").findOne({'numero': Cantiques.numero}, function (error, result) {
+        if (error) {
+            console.log(error);
+        }
+        if (result) {
+            callback(false);
+        } else {
+            database.collection("Cantiques_Goun").insertOne(Cantiques);
+            callback(true);
+        }
+    });
+};
+exports.insertOneCantiquesYoruba = function (Cantiques, callback) {
+    database.collection("Cantiques_Yoruba").findOne({'numero': Cantiques.numero}, function (error, result) {
+        if (error) {
+            console.log(error);
+        }
+        if (result) {
+            callback(false);
+        } else {
+            database.collection("Cantiques_Yoruba").insertOne(Cantiques);
+            callback(true);
+        }
+    });
+};
+exports.insertOneCantiquesEspagnol = function (Cantiques, callback) {
+    database.collection("Cantiques_Espagnol").findOne({'numero': Cantiques.numero}, function (error, result) {
+        if (error) {
+            console.log(error);
+        }
+        if (result) {
+            callback(false);
+        } else {
+            database.collection("Cantiques_Espagnol").insertOne(Cantiques);
+            callback(true);
+        }
+    });
+};
+exports.insertCommandements = function (commandement, callback) {
+    database.collection("Commandements").findOne({'numero': commandement.numero}, function (error, result) {
+        if (error) {
+            console.log(error);
+        }
+        if (result) {
+            callback(false);
+        } else {
+            database.collection("Commandements").insertOne(commandement);
+            callback(true);
+        }
+    });
+};
+exports.insertOnePreceptes = function (preceptes, callback) {
+    database.collection("Preceptes").findOne({'numero': preceptes.numero}, function (error, result) {
+        if (error) {
+            console.log(error);
+        }
+        if (result) {
+            callback(false);
+        } else {
+            database.collection("Preceptes").insertOne(preceptes);
+            callback(true);
+        }
+    });
+};
+exports.insertOneInterdits = function (interdits, callback) {
+    database.collection("Interdits").findOne({'numero': interdits.numero}, function (error, result) {
+        if (error) {
+            console.log(error);
+        }
+        if (result) {
+            callback(false);
+        } else {
+            database.collection("Interdits").insertOne(interdits);
+            callback(true);
+        }
+    });
+};
 exports.insertOneCantiques = function (Cantiques, callback) {
     database.collection("Cantiques").findOne({'numero': Cantiques.numero}, function (error, result) {
         if (error) {
